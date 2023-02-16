@@ -1,25 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import { LeafData } from './modules/leap'; 
+import { MyLines, My3Lines } from './components/components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+  const {connect, isConnected, dataFilter, dataNorm, dataMax, dataMin} = LeafData();
+  return(
+  <div className='App'>
+    <div className='button'>
+    {isConnected ? <button>disconnect</button> : 
+    (<button onClick={connect}>Connect</button>)
+    }
     </div>
-  );
+    <MyLines id ="Normalisé" dataNorm={dataNorm} />
+    <My3Lines id ="Filtré" dataFilter={dataFilter} dataMin={dataMin} dataMax={dataMax}/>
+  </div>)
 }
 
 export default App;
