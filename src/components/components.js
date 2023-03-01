@@ -30,7 +30,7 @@ export const My3Lines = ({dataFilter, dataMin, dataMax}) => {
         options={options}
         series={series}
         type="line"
-        width="700"
+        width="800"
       />
     </div>
   )
@@ -45,7 +45,8 @@ export const MyLines = ({dataNorm}) => {
     ];
 
     const options = { //data on the x-axis
-      chart: { id: 'line-chart'},
+      chart: { id: 'line-chart',
+              color:'#000000',},
       xaxis: {
         categories: []
       }
@@ -57,7 +58,7 @@ export const MyLines = ({dataNorm}) => {
           options={options}
           series={series}
           type="line"
-          width="700"
+          width="800"
         />
       </div>
     )

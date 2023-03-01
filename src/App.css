@@ -1,10 +1,7 @@
-/* .App{
+.App{
   width: 100vw;
   height: 100vh;
   background: url('./img/maxresdefault.jpg');
-  display : flex ;
-  flex-direction : column ;
-  justify-content : flex-start ;
-  align-items : center ;
+  background-size: cover;
   background-repeat: no-repeat;
-} */
+}
