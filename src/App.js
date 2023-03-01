@@ -4,9 +4,6 @@ import { MyLines, My3Lines } from './components/components';
 
 const App = () => {
 
-  return(
-  <div className='App'>
-    <LeafData />
   </div>)
 }
 
