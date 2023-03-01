@@ -1,0 +1,17 @@
+.container{
+    width: 93vw;
+    height: 93vh;
+    display : flex ;
+    flex-direction : row ;
+    justify-content : space-around ;
+    align-items: center;
+    margin-left: 4%;
+  }
+  
+  .ble-btn{
+    width: auto;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
