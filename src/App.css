@@ -5,21 +5,3 @@ html{
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.App{
-  width: 100vw;
-  height: 100vh;
-}
-.chart{
-  display : flex ;
-  flex-direction : row ;
-  justify-content : flex-start ;
-  align-items : center ;
-}  
-.button{
-  width: auto;
-  height: 50px;
-  margin-left: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-}

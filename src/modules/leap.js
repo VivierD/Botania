@@ -1,5 +1,8 @@
 import {leafInfo, leafDeviceOption} from './utils.js';
 import { useEffect, useState } from "react";
+import { MyLines, My3Lines } from '../components/components';
+import Audio from './Audio';
+import './leap.css'
 
 const sizeBuffer = 20
 const limiteBuffer = 50
@@ -77,5 +80,12 @@ export const LeafData = () => {
             console.log(error)
         })
     }
-    return {connect, isConnected, dataFilter, dataNorm, dataMin, dataMax}
+    return (
+        <div className='container'>
+            <button className='ble-btn' onClick={connect}>Connect</button>
+            <Audio />
+            <MyLines id ="Normalisé" dataNorm={dataNorm} />
+            <My3Lines id ="Filtré" dataFilter={dataFilter} dataMin={dataMin} dataMax={dataMax}/>
+        </div>
+    )
 }
