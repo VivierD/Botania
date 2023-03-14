@@ -1,18 +1,27 @@
 .container{
-    width: 93vw;
-    height: 93vh;
-    display : flex ;
-    flex-direction : row ;
-    justify-content : space-around ;
-    align-items: center;
-    margin-left: 4%;
-  }
-  
-  .ble-btn{
-    top: 20px;
-    left: 10px;
-    position: absolute;
-    width: auto;
-    height: 30px;
-    cursor: pointer;
-  }
+  width: auto;
+  height: 100%;
+}
+.chart{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 450px;
+  width: auto;
+  padding: 220px 100px;
+}
+
+.navb{
+  position: fixed;
+  top:0px;
+  display: flex;
+  height: 75px;
+  width: 100%;
+  justify-items: flex-start;
+}
+.ble-btn{
+  padding-top: 10px;
+  height: 50px;
+  width: auto;
+  cursor: pointer;
+}

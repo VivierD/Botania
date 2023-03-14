@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { MyLines, My3Lines } from '../components/components';
 import Audio from './Audio';
 import './leap.css'
+import bleBTN from '../img/BLEicon.png'
 
 const sizeBuffer = 20
 const limiteBuffer = 50
@@ -82,10 +83,14 @@ export const LeafData = () => {
     }
     return (
         <div className='container'>
-            <button className='ble-btn' onClick={connect}>Connect</button>
-            <Audio />
-            <MyLines id ="Normalisé" dataNorm={dataNorm} />
-            <My3Lines id ="Filtré" dataFilter={dataFilter} dataMin={dataMin} dataMax={dataMax}/>
+            <div className='navb'>
+                <img src={bleBTN} className='ble-btn' onClick={connect}/>
+                <Audio />
+            </div>
+            <div className='chart'>
+                <MyLines id ="Normalisé" dataNorm={dataNorm} />
+                <My3Lines id ="Filtré" dataFilter={dataFilter} dataMin={dataMin} dataMax={dataMax}/>
+            </div>
         </div>
     )
 }
