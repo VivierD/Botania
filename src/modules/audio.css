@@ -1,0 +1,9 @@
+.container-audio{
+    display: flex;
+    width: auto;
+    height: 50px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 90px;
+}

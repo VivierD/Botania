@@ -1,0 +1,71 @@
+import playbtn from '../img/playbtn.png'
+import pausebtn from '../img/pausebtn.png'
+import { useState, useRef } from 'react'
+import './audio.css'
+import RandomNum from './randomNum'
+
+class AudioWorkletSource extends AudioWorkletNode {
+  constructor(context, options) {
+    super(context, 'audio-worklet-processor', options)
+    this.port.onmessage = (event) => {
+      if (event.data === 'stop') {
+        this.port.postMessage('stop')
+        return
+      }
+      this.port.postMessage(event.data)
+    }
+  }
+}
+
+export default function Audio() {
+  const random = RandomNum()
+  const audioCtxContainer = useRef(null)
+  const [isPlay, setIsPlay] = useState(false)
+  const [volume, setVolume] = useState(1)
+
+  const onPlay = () => {
+    audioCtxContainer.current = new AudioContext()
+
+    // Création de l'AudioWorkletSource pour le traitement audio
+    audioCtxContainer.current.audioWorklet.addModule('audio-worklet-processor.js').then(() => {
+      const audioWorkletSource = new AudioWorkletSource(audioCtxContainer.current, {
+        outputChannelCount: [2],
+      })
+
+      // Envoi des données audio à l'AudioWorkletSource toutes les 20ms
+      setInterval(() => {
+        const dataArray = new Float32Array(audioCtxContainer.current.sampleRate * 0.02)
+        for (let i = 0; i < dataArray.length; i++) {
+          dataArray[i] = random() * volume
+        }
+        audioWorkletSource.port.postMessage(dataArray)
+      }, 20)
+
+      // Démarrage de l'AudioWorkletSource
+      audioWorkletSource.connect(audioCtxContainer.current.destination)
+
+      setIsPlay(true)
+    })
+  }
+
+  const onStop = () => {
+    audioCtxContainer.current.close()
+    setIsPlay(false)
+  }
+
+  const onVolumeChange = (event) => {
+    const newVolume = parseFloat(event.target.value)
+    setVolume(newVolume)
+  }
+
+  return (
+    <div className="container-audio">
+      {isPlay ? (
+        <img alt="PauseBtn" src={pausebtn} onClick={onStop} />
+      ) : (
+        <img alt="PlayBtn" src={playbtn} onClick={onPlay} />
+      )}
+      <input type="range" min="0" max="1" step="0.01" value={volume} onChange={onVolumeChange} />
+    </div>
+  )
+}

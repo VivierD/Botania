@@ -1,6 +1,7 @@
 import './App.css';
 import { LeafData } from './modules/leap'; 
 import { MyLines, My3Lines } from './components/components';
+import Audio from './modules/Audio';
 
 const App = () => {
   const {connect, isConnected, dataFilter, dataNorm, dataMax, dataMin} = LeafData();
@@ -11,8 +12,9 @@ const App = () => {
     (<button onClick={connect}>Connect</button>)
     }
     </div>
-    <MyLines id ="Normalisé" dataNorm={dataNorm} />
-    <My3Lines id ="Filtré" dataFilter={dataFilter} dataMin={dataMin} dataMax={dataMax}/>
+    <Audio />
+      <MyLines id ="Normalisé" dataNorm={dataNorm} />
+      <My3Lines id ="Filtré" dataFilter={dataFilter} dataMin={dataMin} dataMax={dataMax}/>
   </div>)
 }
 
