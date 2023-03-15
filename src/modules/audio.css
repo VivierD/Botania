@@ -1,9 +1,22 @@
 .container-audio{
+    padding-top: 10px;
     display: flex;
     width: auto;
     height: 50px;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    left: 70px;
 }
+.PausePlaybtn{
+    display: flex;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.slider{
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input{
+    cursor:pointer;
+}
+p{
+    margin: 0;
