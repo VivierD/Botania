@@ -18,34 +18,29 @@ export const LeafData = () => {
     const [tempMin, setTempMin] = useState(new Array(sizeBuffer).fill(0))
     const [tempMax, setTempMax] = useState(new Array(sizeBuffer).fill(0))
 
-    const interval = setInterval(() => {}, 20);
 
-    useEffect(()=>{
-        if(tempNorm.length >= limiteBuffer){
-            tempNorm.splice(0, limiteBuffer-20)
-        }
-        if(tempFilter.length >= limiteBuffer){
-            tempFilter.splice(0, limiteBuffer-20)
-        }
-        if(tempMax.length >= limiteBuffer){
-            tempMax.splice(0, limiteBuffer-20)
-        }
-        if(tempMin.length >= limiteBuffer){
-            tempMin.splice(0, limiteBuffer-20)
-        }
-    },[interval])
-    
-  
-    useEffect(()=>{
+    useEffect(()=> {
         let d = [...tempNorm]
         let y = [...tempFilter]
         let a = [...tempMin]
         let b = [...tempMax]
+        if(tempNorm.length >= limiteBuffer){
+            d.splice(0, limiteBuffer-20)
+        }
+        if(tempFilter.length >= limiteBuffer){
+            y.splice(0, limiteBuffer-20)
+        }
+        if(tempMax.length >= limiteBuffer){
+            b.splice(0, limiteBuffer-20)
+        }
+        if(tempMin.length >= limiteBuffer){
+            a.splice(0, limiteBuffer-20)
+        }
         setDataFilter(y.splice(y.length-sizeBuffer,sizeBuffer))
         setDataNorm(d.splice(d.length-sizeBuffer, sizeBuffer))
         setDataMin(a.splice(a.length-sizeBuffer, sizeBuffer))
         setDataMax(b.splice(b.length-sizeBuffer, sizeBuffer))
-    },[interval])
+    },[tempNorm])
   
     function handleValueChanged(event){
         let value = event.target.value
@@ -84,7 +79,7 @@ export const LeafData = () => {
     return (
         <div className='container'>
             <div className='navb'>
-                <img src={bleBTN} className='ble-btn' onClick={connect}/>
+                <img src={bleBTN} className='ble-btn' onClick={() => {connect()}} alt='ble icone'/>
                 <Audio />
             </div>
             <div className='chart'>
