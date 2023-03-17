@@ -1,3 +1,4 @@
+//Données nécesasire à la connexion Bluetooth
 const leafInfo = {
     primaryService : 0xFEC0,
     name : 'Feather_M0_BLE_PRPH',

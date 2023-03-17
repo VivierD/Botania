@@ -53,18 +53,19 @@ export default function Audio() {
     }).catch(error=>console.log(error))
   }
 
-  //function permettant de stopper l'audio
+  //Function permettant de stopper l'audio
   const onStop = () => {
     audioCtxContainer.current.close()
     setIsPlay(false)
   }
 
-    //function permettant de gérer le volume
+    //Function permettant de gérer le volume
     const onVolumeChange = (event) => {
       const newVolume = parseFloat(event.target.value)
       setVolume(newVolume)
     }
     
+    //Function permettant de gérer la fréquence
     const onFrequencyChange = (event) => {
       const newFrequency = parseInt(event.target.value)
       setFrequency(newFrequency)

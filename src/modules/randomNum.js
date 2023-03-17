@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 const sizeBuffer = 20
 const limiteBuffer = 50
 
+//Génére des nombres aléatoires entre 0 et 1 afin de simuler le comportement de Botania
 export default function RandomNum() {
     const [random, setRandom] = useState([])
     const [temprandom, setTempRandom] = useState([])

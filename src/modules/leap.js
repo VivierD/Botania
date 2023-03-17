@@ -19,11 +19,13 @@ export const LeafData = () => {
     const [tempMax, setTempMax] = useState(new Array(sizeBuffer).fill(0))
 
 
+    //Stockage des données reçus
     useEffect(()=> {
         let d = [...tempNorm]
         let y = [...tempFilter]
         let a = [...tempMin]
         let b = [...tempMax]
+        //Vérifie la taille des array temporaire et la réduit si nécessaire.
         if(tempNorm.length >= limiteBuffer){
             d.splice(0, limiteBuffer-20)
         }
@@ -42,6 +44,7 @@ export const LeafData = () => {
         setDataMax(b.splice(b.length-sizeBuffer, sizeBuffer))
     },[tempNorm])
   
+    //Reçoit les valeurs et les stock dans des array temporaires
     function handleValueChanged(event){
         let value = event.target.value
         let sample = new Uint16Array(value.buffer)
@@ -51,6 +54,7 @@ export const LeafData = () => {
         setTempFilter(filterArray => [...filterArray, sample[3]])
     }
 
+    //Gére la connexion au bluetooth et la réception de données
     const connect = async() => {
         navigator.bluetooth.requestDevice(leafDeviceOption)
         .then(device => {
